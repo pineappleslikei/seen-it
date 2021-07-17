@@ -1,9 +1,17 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+    <div id="nav">
+      <div id="nav-left">
+        <img id="logo" src="./assets/mylogo.png" alt="" />
+      </div>
+      <div id="nav-right">
+        <router-link :to="{ name: 'Home' }">Home</router-link> |
+        <router-link :to="{ name: 'Search' }">Search</router-link> |
+        <router-link :to="{ name: 'Profile' }">Profile</router-link>
+      </div>
+    </div>
+    <router-view></router-view>
   </div>
-  <router-view />
 </template>
 
 <style>
@@ -15,16 +23,32 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-}
-
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  padding: 5px;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: whitesmoke;
+}
+#nav {
+  background-color: #1098f7;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+#logo {
+  width: 125px;
+}
+#nav-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20px;
+}
+.nav-item {
+  padding: 8px;
+  margin: 0px;
 }
 </style>

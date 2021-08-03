@@ -10,18 +10,18 @@ api = Api(app)
 
 
 # sends real API call to the moviedb
-# class Movies(Resource):
-#     def get(self, search_term):
-#         external_results = mov.get_movies(search_term)
-#         return external_results
+class Movies(Resource):
+    def get(self, search_term):
+        external_results = mov.get_movies(search_term)
+        return external_results
 
 
 # return dummy data for working without network access
-class Movies(Resource):
-    def get(self, search_term):
-        with open('dummy.json') as dummy_data:
-            dummy_data_obj = json.load(dummy_data)
-        return dummy_data_obj
+# class Movies(Resource):
+#     def get(self, search_term):
+#         with open('dummy.json') as dummy_data:
+#             dummy_data_obj = json.load(dummy_data)
+#         return dummy_data_obj
 
 
 class A_Movie(Resource):

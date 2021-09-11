@@ -14,14 +14,14 @@ class Movies(Resource):
         return external_results
 
 
-class A_Movie(Resource):
+class Movie_Detail(Resource):
     def get(self, movie_id):
         external_results = mov.get_movie_details(movie_id)
         return external_results
 
 
 api.add_resource(Movies, '/<search_term>')
-api.add_resource(A_Movie, '/<movie_id>')
+api.add_resource(Movie_Detail, '/<movie_id>')
 
 if __name__ == '__main__':
     app.run(debug=True)

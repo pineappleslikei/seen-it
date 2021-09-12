@@ -1,26 +1,37 @@
 <template>
-  <div class="aResult">
+  <div class="aResult" @click="showModal">
     <div>
       <img class="poster-frame" :src="posterPath" @error="replaceImage" />
     </div>
     <div class="search-text">
       <h1>{{ movieName }}</h1>
-      <p>{{ movieDescription }}</p>
     </div>
   </div>
+  <ResultModal
+    v-show="isModalVisible"
+    :movie-id="movieId"
+    @close="closeModal"
+  />
 </template>
 
 <script>
-// import axios from "axios";
+import ResultModal from "./ResultModal.vue";
 
 export default {
   name: "SearchResult",
+  data() {
+    return {
+      isModalVisible: false,
+    };
+  },
+  components: {
+    ResultModal,
+  },
   props: {
     movieName: String,
-    movieDescription: String,
+    movieId: Number,
     moviePic: String,
   },
-  // how do we do async in js?
   computed: {
     posterPath: function () {
       var path = this.moviePic;
@@ -32,6 +43,12 @@ export default {
     replaceImage: function (e) {
       e.target.src = require("../assets/default.jpg");
     },
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
   },
 };
 </script>
@@ -41,7 +58,7 @@ export default {
   width: 75em;
 }
 .poster-frame {
-  width: 200px;
+  width: 100px;
   margin: 10px;
 }
 .aResult {

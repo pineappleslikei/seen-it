@@ -14,6 +14,7 @@
           :movie-name="movie.title"
           :movie-description="movie.overview"
           :movie-pic="movie.poster_path"
+          :movie-id="movie.id"
         />
       </div>
     </div>
